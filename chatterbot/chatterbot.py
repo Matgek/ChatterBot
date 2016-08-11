@@ -130,6 +130,7 @@ class ChatBot(object):
         """
         Return the bot's response based on the input.
         """
+
         input_statement = self.input.process_input(input_item)
 
         # Select a response to the input statement

@@ -1,6 +1,11 @@
+#coding=utf-8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 from chatterbot import ChatBot
 from chatterbot.training.trainers import ListTrainer
-
+from chatterbot.training.trainers import ChatterBotCorpusTrainer
 
 # Create a new instance of a ChatBot
 bot = ChatBot("Terminal",
@@ -14,18 +19,14 @@ bot = ChatBot("Terminal",
     output_adapter="chatterbot.adapters.output.TerminalAdapter",
     database="../database.db"
 )
-
-conversation = [
-    "Hello",
-    "Hi there!",
-    "How are you doing?",
-    "I'm doing great.",
-    "That is good to hear",
-    "Thank you.",
-    "You're welcome."
-    ]
-bot.set_trainer(ListTrainer)
-bot.train(conversation)
+#
+# conversation = [
+#     u"你好",
+#     u"你好! 今天过得怎样？",
+#     u"不错啊，谢谢！",
+#     ]
+bot.set_trainer(ChatterBotCorpusTrainer)
+bot.train("chatterbot.corpus.english")
 
 print("Type something to begin...")
 
